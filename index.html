@@ -1,222 +1,97 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dabao予約</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      padding: 40px;
-    }
+    <meta charset="UTF-8">
+    <title>予約</title>
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-    }
+    <link rel="stylesheet" href="style.css">
 
-    h1 {
-      margin-bottom: 30px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    input,
-    select,
-    button {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      background: #1976d2;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #1258a7;
-    }
-
-    .error {
-      color: red;
-      margin-top: 6px;
-      font-size: 14px;
-    }
-
-    .success {
-      color: green;
-      margin-top: 20px;
-    }
-  </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>dabao予約</h1>
+<div class="container">
+
+    <h1>211AMOY予約</h1>
 
     <form id="bookingForm">
 
-      <div class="form-group">
-        <label>名前</label>
-        <input type="text" id="name" required />
-      </div>
+        名前
+        <input
+                type="text"
+                id="name"
+                placeholder="必須"
+                required
+        >
 
-      <div class="form-group">
-        <label>電子メール</label>
-        <input type="email" id="email" />
-      </div>
+        電子メール
+        <input
+                type="email"
+                id="email"
+                placeholder="必須"
+                required
+        >
 
-      <div class="form-group">
-        <label>電話番号</label>
-        <input type="text" id="phone" required />
-      </div>
+        電話番号
+        <input
+                type="text"
+                id="phone"
+                placeholder="必須"
+                required
+        >
 
-      <div class="form-group">
-        <label>予約年月日</label>
-        <input type="date" id="date" required />
-      </div>
+        予約年月日
+        <input
+                type="date"
+                id="date"
+                required
+        >
 
-      <div class="form-group">
-        <label>予約時間</label>
+        予約時間
         <select id="time" required>
-          <option value="">選択してください</option>
-          <option value="10:00">10:00~11:00</option>
-          <option value="11:00">11:00</option>
-          <option value="12:00">12:00</option>
-          <option value="13:00">13:00</option>
-          <option value="14:00">14:00</option>
-          <option value="15:00">15:00</option>
-          <option value="16:00">16:00</option>
-        </select>
-      </div>
 
-      <div class="form-group">
-        <label>サービス</label>
+            <option value="">選択してください</option>
+
+            <option>09:00</option>
+            <option>10:00</option>
+            <option>11:00</option>
+            <option>12:00</option>
+            <option>13:00</option>
+            <option>14:00</option>
+            <option>15:00</option>
+            <option>16:00</option>
+            <option>17:00</option>
+            <option>18:00</option>
+            <option>19:00</option>
+
+        </select>
+
+        サービス
+
         <select id="service" required>
-          <option>選択してください</option>
-		        <option>かっさ 20分/1800円</option>
-        <option>吸い玉(伝統火罐十スライドカッピング) 20分/3000円</option>
-  
- <option>手技による伝統懸灸(肩·首·腰·背中) 60分/7000円</option>
-        <option>手技による伝統懸灸(肩·首·腰·背中) 十 吸い玉 75分/9000円</option>
-        <option>手技による伝統懸灸(肩·首·腰·背中) 十 かっさ 70分/8000円</option>
-        <option>手技による伝統懸灸(胸部) 60分/7000円</option>
-         <option>手技による伝統懸灸(腹部) 60分/7000円</option>
-          <option>手技による伝統懸灸(頭部·顔) 60分/6000円</option>
-           <option>小児向け伝統施術(推拿·脊柱ケ·腹部ケア) 60分/6000円</option>
-            <option>手技による伝統懸灸(脚) 70分/8000円</option>
-             <option>手技による伝統懸灸(背中+腹部) 120分/13000円</option>
+
+            <option value="">選択してください</option>
+
+            <option>かっさ 20分/1800円</option>
+            <option>吸い玉(伝統火罐十スライドカッピング) 20分/3000円</option>
+            <option>手技による伝統懸灸(肩·首·腰·背中) 60分/7000円</option>
+            <option>手技による伝統懸灸(肩·首·腰·背中) 十 吸い玉 75分/9000円</option>
+            <option>手技による伝統懸灸(肩·首·腰·背中) 十 かっさ 70分/8000円</option>
 
         </select>
-      </div>
 
-      <button type="submit">提出</button>
+        <button type="submit">
+            提出
+        </button>
 
-      <div class="error" id="error"></div>
-      <div class="success" id="success"></div>
+        <div id="message"></div>
 
     </form>
-  </div>
 
-  <script>
+</div>
 
-    // 替换成你的 Formspree endpoint
-    const FORMSPREE_URL = "https://formspree.io/f/mqenwlgz";
-
-    const form = document.getElementById("bookingForm");
-    const errorBox = document.getElementById("error");
-    const successBox = document.getElementById("success");
-
-    // 获取已预约数据
-    function getBookings() {
-      return JSON.parse(localStorage.getItem("bookings") || "[]");
-    }
-
-    // 保存预约
-    function saveBooking(booking) {
-      const bookings = getBookings();
-      bookings.push(booking);
-      localStorage.setItem("bookings", JSON.stringify(bookings));
-    }
-
-    // 检查时间冲突
-    function isTimeConflict(date, time) {
-      const bookings = getBookings();
-
-      return bookings.some(item => {
-        return item.date === date && item.time === time;
-      });
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      errorBox.textContent = "";
-      successBox.textContent = "";
-
-      const booking = {
-        姓名: document.getElementById("name").value,
-        电子邮件: document.getElementById("email").value,
-        电话: document.getElementById("phone").value,
-        日期: document.getElementById("date").value,
-        时间: document.getElementById("time").value,
-        服务: document.getElementById("service").value,
-      };
-
-      // 检查冲突
-      if (isTimeConflict(booking.date, booking.time)) {
-        errorBox.textContent = "この時間は既に予約しました。";
-        return;
-      }
-
-      try {
-
-        // 发送到 Formspree
-        const response = await fetch(FORMSPREE_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(booking)
-        });
-
-        if (response.ok) {
-
-          // 保存预约记录
-          saveBooking(booking);
-
-          successBox.textContent = "予約成功";
-
-          form.reset();
-
-        } else {
-          errorBox.textContent = "発信失敗";
-        }
-
-      } catch (err) {
-        errorBox.textContent = "システムエラー";
-      }
-    });
-
-  </script>
+<script src="check.js"></script>
 
 </body>
 </html>
