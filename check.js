@@ -1,4 +1,4 @@
-fetch("https://你的render地址/api/reserve", {
+fetch("https://yoyaku8.onrender.com/api/reservations", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
