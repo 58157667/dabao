@@ -40,7 +40,7 @@ form.addEventListener("submit", async (e) => {
 
     try {
 
-        // 1. 先发送到 Spring Boot
+        // 1. 发送到 Spring Boot
 
         const response = await fetch(API_URL, {
 
@@ -66,20 +66,33 @@ form.addEventListener("submit", async (e) => {
             return;
         }
 
-        // 2. 再发送 Formspree 邮件
+        // 2. 发送 Formspree 邮件
 
-        await fetch(FORMSPREE_URL, {
+        const mailResponse =
+            await fetch(FORMSPREE_URL, {
 
-            method: "POST",
+                method: "POST",
 
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
 
-            body: JSON.stringify(booking)
+                body: JSON.stringify(booking)
 
-        });
+            });
+
+        // 邮件失败
+
+        if (!mailResponse.ok) {
+
+            message.innerHTML =
+                "<p style='color:red'>メール送信失敗</p>";
+
+            return;
+        }
+
+        // 成功
 
         message.innerHTML =
             "<p style='color:green'>予約成功</p>";
@@ -87,6 +100,8 @@ form.addEventListener("submit", async (e) => {
         form.reset();
 
     } catch (error) {
+
+        console.error(error);
 
         message.innerHTML =
             "<p style='color:red'>システムエラー</p>";
