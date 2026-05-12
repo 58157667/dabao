@@ -1,8 +1,8 @@
 const API_URL =
-    "https://你的render地址.onrender.com/api/reservations";
+    "https://yoyaku8.onrender.com/api/reservations";
 
 const FORMSPREE_URL =
-    "https://formspree.io/f/xzzabcde";
+    "https://formspree.io/f/mqenwlpa";
 
 const form =
     document.getElementById("bookingForm");
