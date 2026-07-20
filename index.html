@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>预约</title>
@@ -8,40 +8,41 @@
 <body>
 <div class="container">
     <h1>***预约</h1>
+
     <form id="bookingForm">
-        名前111
+        姓名
         <input
                 type="text"
                 id="name"
-                placeholder="必須"
+                placeholder="必填"
                 required
         >
 
-        電子メール
+        电子邮箱
         <input
                 type="email"
                 id="email"
-                placeholder="任意"
+                placeholder="选填"
         >
 
-        電話番号
-       <input
-    type="tel"
-    id="phone"
-    placeholder="必須、半角数字のみ"
-    required
->
+        手机号码
+        <input
+                type="tel"
+                id="phone"
+                placeholder="必填，仅限数字"
+                required
+        >
 
-        予約年月日
+        预约日期
         <input
                 type="date"
                 id="date"
                 required
         >
 
-        予約時間
+        预约时间
         <select id="time" required>
-            <option value="">選択してください</option>
+            <option value="">请选择</option>
             <option>09:00</option>
             <option>10:00</option>
             <option>11:00</option>
@@ -55,43 +56,44 @@
             <option>19:00</option>
         </select>
 
-        サービス
+        服务项目
         <select id="service" required>
-            <option value="">選択してください</option>
-            <option>かっさ 20分/1800円</option>
-            <option>吸い玉(伝統火罐十スライドカッピング) 20分/3000円</option>
-            <option>手技による伝統懸灸(肩·首·腰·背中) 60分/7000円</option>
-            <option>手技による伝統懸灸(肩·首·腰·背中) 十 吸い玉 75分/9000円</option>
-            <option>手技による伝統懸灸(肩·首·腰·背中) 十 かっさ 70分/8000円</option>
+            <option value="">请选择</option>
+            <option>刮痧 20分钟 / 1800日元</option>
+            <option>拔罐（传统火罐+走罐）20分钟 / 3000日元</option>
+            <option>传统悬灸（肩、颈、腰、背）60分钟 / 7000日元</option>
+            <option>传统悬灸（肩、颈、腰、背）+ 拔罐 75分钟 / 9000日元</option>
+            <option>传统悬灸（肩、颈、腰、背）+ 刮痧 70分钟 / 8000日元</option>
         </select>
 
-        <button type="submit">提出</button>
+        <button type="submit">提交预约</button>
         <div id="message"></div>
     </form>
 </div>
 
 <script src="app.js"></script>
+
 <script>
+    // 手机号仅允许输入数字
     const phone = document.getElementById("phone");
 
-phone.addEventListener("input", function () {
-    // 删除所有非数字字符
-    this.value = this.value.replace(/\D/g, "");
-});
-    
-// 页面加载时设置date最小值为今日
-window.onload = function () {
-    const today = new Date();
-    const y = today.getFullYear();
-    let m = today.getMonth() + 1;
-    let d = today.getDate();
-    if (m < 10) m = '0' + m;
-    if (d < 10) d = '0' + d;
-    const minDay = `${y}-${m}-${d}`;
-    document.getElementById('date').min = minDay;
-}
+    phone.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "");
+    });
 
+    // 页面加载时设置日期最小值为今天
+    window.onload = function () {
+        const today = new Date();
+        const y = today.getFullYear();
+        let m = today.getMonth() + 1;
+        let d = today.getDate();
 
+        if (m < 10) m = '0' + m;
+        if (d < 10) d = '0' + d;
+
+        const minDay = `${y}-${m}-${d}`;
+        document.getElementById('date').min = minDay;
+    }
 </script>
 </body>
 </html>
