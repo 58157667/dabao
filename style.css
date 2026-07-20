@@ -1,0 +1,24 @@
+.container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 20px;
+}
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0 16px;
+    padding: 8px;
+    font-size: 14px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: #3366cc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+#message {
+    margin-top: 12px;
+    color: red;
+}
