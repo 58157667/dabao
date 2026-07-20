@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-
     <meta charset="UTF-8">
-    <title>予約</title>
-
+    <title>预约</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
 <div class="container">
-
-    <h1>211AMOY予約</h1>
-
+    <h1>***预约</h1>
     <form id="bookingForm">
-
         名前
         <input
                 type="text"
@@ -29,15 +21,14 @@
         <input
                 type="email"
                 id="email"
-                placeholder="必須"
-                
+                placeholder="任意"
         >
 
         電話番号
         <input
                 type="text"
                 id="phone"
-                placeholder="必須"
+                placeholder="必須、半角数字のみ"
                 required
         >
 
@@ -50,9 +41,7 @@
 
         予約時間
         <select id="time" required>
-
             <option value="">選択してください</option>
-
             <option>09:00</option>
             <option>10:00</option>
             <option>11:00</option>
@@ -64,37 +53,36 @@
             <option>17:00</option>
             <option>18:00</option>
             <option>19:00</option>
-
         </select>
 
         サービス
-
         <select id="service" required>
-
             <option value="">選択してください</option>
-
             <option>かっさ 20分/1800円</option>
             <option>吸い玉(伝統火罐十スライドカッピング) 20分/3000円</option>
             <option>手技による伝統懸灸(肩·首·腰·背中) 60分/7000円</option>
             <option>手技による伝統懸灸(肩·首·腰·背中) 十 吸い玉 75分/9000円</option>
             <option>手技による伝統懸灸(肩·首·腰·背中) 十 かっさ 70分/8000円</option>
-
         </select>
 
-      <button type="submit">
-            提出
-        </button> 
- <!-- <button type="button" onclick="window.location.href='confirm.html'">
-    提出
-</button>-->
-        
+        <button type="submit">提出</button>
         <div id="message"></div>
-
     </form>
-
 </div>
 
 <script src="app.js"></script>
-
+<script>
+// 页面加载时设置date最小值为今日
+window.onload = function () {
+    const today = new Date();
+    const y = today.getFullYear();
+    let m = today.getMonth() + 1;
+    let d = today.getDate();
+    if (m < 10) m = '0' + m;
+    if (d < 10) d = '0' + d;
+    const minDay = `${y}-${m}-${d}`;
+    document.getElementById('date').min = minDay;
+}
+</script>
 </body>
 </html>
