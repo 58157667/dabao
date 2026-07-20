@@ -14,17 +14,17 @@ const confirmArea =
 
 confirmArea.innerHTML = `
 
-<p>名前：${booking.name}</p>
+<p>姓名：${booking.name}</p>
 
-<p>メール：${booking.email}</p>
+<p>电子邮箱：${booking.email}</p>
 
-<p>電話番号：${booking.phone}</p>
+<p>手机号码：${booking.phone}</p>
 
-<p>予約日：${booking.reserveDate}</p>
+<p>预约日期：${booking.reserveDate}</p>
 
-<p>予約時間：${booking.reserveTime}</p>
+<p>预约时间：${booking.reserveTime}</p>
 
-<p>サービス：${booking.service}</p>
+<p>服务项目：${booking.service}</p>
 
 `;
 
@@ -37,7 +37,7 @@ document
 
         try {
 
-            // Spring Boot
+            // 提交到 Spring Boot
             const response =
                 await fetch(API_URL, {
 
@@ -67,7 +67,7 @@ document
                 return;
             }
 
-            // Formspree
+            // 发送邮件（Formspree）
             const mailResponse =
                 await fetch(FORMSPREE_URL, {
 
@@ -89,15 +89,15 @@ document
             if (!mailResponse.ok) {
 
                 message.innerHTML =
-                    "<p style='color:red'>メール送信失敗</p>";
+                    "<p style='color:red'>邮件发送失败</p>";
 
                 return;
             }
 
-            // 清除数据
+            // 清除本地数据
             localStorage.removeItem("booking");
 
-            // 跳转完成页
+            // 跳转到完成页面
             window.location.href =
                 "complete.html";
 
@@ -106,7 +106,7 @@ document
             console.error(error);
 
             message.innerHTML =
-                "<p style='color:red'>システムエラー</p>";
+                "<p style='color:red'>系统错误，请稍后再试。</p>";
 
         }
 
