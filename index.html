@@ -25,11 +25,14 @@
         >
 
         電話番号
+        <!-- 增加正则：只允许半角数字 -->
         <input
                 type="text"
                 id="phone"
                 placeholder="必須、半角数字のみ"
                 required
+                pattern="^[0-9]+$"
+                title="電話番号は半角数字のみ入力してください"
         >
 
         予約年月日
@@ -83,6 +86,25 @@ window.onload = function () {
     const minDay = `${y}-${m}-${d}`;
     document.getElementById('date').min = minDay;
 }
+
+// 表单提交校验手机号纯数字
+const form = document.getElementById('bookingForm');
+const msgBox = document.getElementById('message');
+form.addEventListener('submit', function(e) {
+    const phoneVal = document.getElementById('phone').value.trim();
+    // 正则判断是否全部为半角数字
+    const numReg = /^[0-9]+$/;
+    if (!numReg.test(phoneVal)) {
+        e.preventDefault(); // 阻止提交
+        msgBox.style.color = 'red';
+        msgBox.textContent = 'エラー：電話番号は半角数字だけで入力してください';
+        return;
+    }
+    // 校验通过清空提示
+    msgBox.textContent = '';
+    msgBox.style.color = '';
+    // 这里可以写提交逻辑，如ajax请求
+});
 </script>
 </body>
 </html>
