@@ -30,8 +30,6 @@
                 id="phone"
                 placeholder="必須、半角数字のみ"
                 required
-                pattern="^[0-9]+$"
-                title="電話番号は半角数字のみ入力してください"
         >
 
         予約年月日
@@ -74,53 +72,19 @@
 
 <script src="app.js"></script>
 <script>
-// 予約年月日を今日以降のみに制限
-function setMinDate() {
+// 页面加载时设置date最小值为今日
+window.onload = function () {
     const today = new Date();
-    const year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    let day = today.getDate();
-
-    // 月日2桁に整形
-    month = month < 10 ? '0' + month : month;
-    day = day < 10 ? '0' + day : day;
-
-    const minDateStr = `${year}-${month}-${day}`;
-    document.getElementById('date').min = minDateStr;
+    const y = today.getFullYear();
+    let m = today.getMonth() + 1;
+    let d = today.getDate();
+    if (m < 10) m = '0' + m;
+    if (d < 10) d = '0' + d;
+    const minDay = `${y}-${m}-${d}`;
+    document.getElementById('date').min = minDay;
 }
 
-window.onload = setMinDate;
 
-// フォーム送信時チェック
-const form = document.getElementById('bookingForm');
-const msgBox = document.getElementById('message');
-form.addEventListener('submit', function(e) {
-    msgBox.textContent = '';
-    msgBox.style.color = '';
-
-    // 電話番号半角数字チェック
-    const phoneVal = document.getElementById('phone').value.trim();
-    const numReg = /^[0-9]+$/;
-    if (!numReg.test(phoneVal)) {
-        e.preventDefault();
-        msgBox.style.color = 'red';
-        msgBox.textContent = 'エラー：電話番号は半角数字だけで入力してください';
-        return;
-    }
-
-    // 追加：JS側で日付再チェック（ブラウザ改ざん防止）
-    const selectDate = new Date(document.getElementById('date').value);
-    const now = new Date();
-    // 時分秒を0にして日付比較
-    selectDate.setHours(0,0,0,0);
-    now.setHours(0,0,0,0);
-    if (selectDate < now) {
-        e.preventDefault();
-        msgBox.style.color = 'red';
-        msgBox.textContent = 'エラー：今日以降の日付を選択してください';
-        return;
-    }
-});
 </script>
 </body>
 </html>
